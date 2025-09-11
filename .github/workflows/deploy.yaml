@@ -34,12 +34,12 @@ jobs:
 
       - name: Copy code to EC2
         run: |
-          scp -o StrictHostKeyChecking=no -r * ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/app
+          scp -i key.pem -o StrictHostKeyChecking=no -r * ec2-user@${{ secrets.EC2_HOST }}:/home/ec2-user/app
 
       - name: Deploy on EC2
         run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "
-            cd /home/${{ secrets.EC2_USERNAME }}/app &&
-            npm install &&
-            nohup node index.js &
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.EC2_HOST }} "
+          cd /home/ec2-user/app &&
+          npm install &&
+          nohup node index.js &
           "
