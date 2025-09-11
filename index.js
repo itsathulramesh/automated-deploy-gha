@@ -10,7 +10,7 @@ app.set('views', path.join(__dirname, 'views')); // location of your views folde
 
 // Route renders index.ejs with dynamic data
 app.get('/', (req, res) => {
-  res.render('index', { name: 'DevOps CI/CD Pipeline Learner' });
+  res.render('index', { message: 'DevOps CI/CD Pipeline Learner' });
 });
 
 const port = process.env.PORT || 3000;

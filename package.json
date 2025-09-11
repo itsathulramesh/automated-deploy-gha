@@ -1,5 +1,5 @@
 {
-  "name": "ci-cd-sample",
+  "name": "automated-deploy-pipeline",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
