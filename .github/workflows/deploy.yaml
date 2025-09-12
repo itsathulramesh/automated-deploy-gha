@@ -36,7 +36,7 @@ jobs:
       - name: Deploy code on EC2 using git pull
         run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.EC2_HOST }} "
-            cd /home/ec2-user/app &&
+            cd /home/ec2-user/app/automated-deploy-gha &&
             git pull origin main &&
             npm install &&
             pm2 restart app || pm2 start index.js --name app
