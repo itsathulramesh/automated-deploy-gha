@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
   res.render('index', { message: 'DevOps CI/CD Pipeline Learner using Github Actions' });
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
