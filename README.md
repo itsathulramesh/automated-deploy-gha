@@ -8,7 +8,7 @@ A simple Node.js Express app demonstrating a CI/CD pipeline that automates deplo
 
 This project showcases:
 - Automated code deployment to EC2 whenever there is a **push to main branch** or a **manual trigger (workflow_dispatch)**.
-- Use of **GitHub Secrets** to manage sensitive data (EC2 SSH Key, Host, PORT).
+- Use of **GitHub Secrets** to manage sensitive data (EC2 SSH Key, Host).
 - Process management using **PM2**.
 - Environment variable handling with `.env`.
 
@@ -40,9 +40,19 @@ This project showcases:
 - GitHub Secrets configured:
     - `EC2_KEY`: Private SSH key for EC2 access.
     - `EC2_HOST`: EC2 public IP.
-    - Other necessary secrets (e.g., `PORT`, API keys if applicable).
 
-- EC2 Instance set up with Node.js, Git, and PM2 installed.
+- EC2 Instance setup:
+    - Node.js, Git, and PM2 installed.
+    - Initial Git repository cloned:
+        ```
+        git clone <your-repo-url> /home/ec2-user/app/automated-deploy-gha
+        ```
+    - `.env` file created manually at `/home/ec2-user/app/automated-deploy-gha/.env` containing:
+        ```
+        PORT=3000
+        ```
+
+    This ensures the app knows the port and can start properly after deployment.
 
 ---
 
